@@ -1,0 +1,22 @@
+{
+  "12-345-67": {
+    "manufacturer": "Toyota",
+    "model": "Corolla",
+    "year": "2018",
+    "fuel": "Hybrid",
+    "owner": "Lior Cohen",
+    "registration": "Public",
+    "status": "Active",
+    "statusColor": "#22d3ee"
+  },
+  "99-111-22": {
+    "manufacturer": "Mazda",
+    "model": "3",
+    "year": "2022",
+    "fuel": "Gasoline",
+    "owner": "Publicly listed",
+    "registration": "Public",
+    "status": "Active",
+    "statusColor": "#22d3ee"
+  }
+}

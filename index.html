@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IL Plate Checker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="fullscreen.css" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="apple-touch-icon" href="/icon-192.png">
+</head>
+<body>
+  <div class="app-shell">
+    <canvas id="starfield"></canvas>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+    <div class="cursor-star" id="cursorStar"></div>
+    <div class="window-panel">
+      <aside class="sidebar glass-card">
+        <div class="sidebar-brand">
+          <span class="sidebar-logo">IL</span>
+          <div>
+            <h2>IL Plate</h2>
+            <p>Checker</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <button class="nav-item active" data-tab="home">Home</button>
+          <button class="nav-item" data-tab="history">History</button>
+          <button class="nav-item" data-tab="favorites">Favorites</button>
+          <button class="nav-item" data-tab="settings">Settings</button>
+          <button class="nav-item" data-tab="about">About</button>
+        </nav>
+        <div class="sidebar-status">
+          <span>Connected</span>
+          <strong>Local mode</strong>
+        </div>
+      </aside>
+      <main class="main-card">
+        <header class="hero">
+          <div class="hero-copy">
+            <h1>IL Plate Checker</h1>
+            <p>Vehicle information at your fingertips</p>
+          </div>
+        </header>
+        <div class="tab-section visible" id="homeSection">
+          <section class="search-card glass-card">
+          <div class="search-input-wrap">
+            <label for="plateInput" class="sr-only">Enter license plate</label>
+            <input id="plateInput" type="text" placeholder="Enter license plate..." maxlength="14" />
+            <button id="searchButton" class="search-button">Search</button>
+          </div>
+          <p class="input-hint">Example: 48 320 26 or 4832026</p>
+        </section>
+        <section class="results-card glass-card hidden" id="resultsCard">
+          <div class="car-preview" id="carPreview">
+            <div class="car-model" id="carModel" aria-hidden="true">
+              <div class="car-shadow"></div>
+              <div class="car-body"></div>
+              <div class="car-top"></div>
+              <div class="car-window"></div>
+              <div class="car-door car-door-left"></div>
+              <div class="car-door car-door-right"></div>
+              <div class="car-grille"></div>
+              <div class="car-headlamp car-headlamp-left"></div>
+              <div class="car-headlamp car-headlamp-right"></div>
+              <div class="car-wheel car-wheel-front"></div>
+              <div class="car-wheel car-wheel-rear"></div>
+            </div>
+            <div class="preview-actions">
+              <button id="favoriteButton" class="fav-button">☆ Save to Favorites</button>
+              <p class="favorite-note" id="favoriteNote">Save any found vehicle to your favorites.</p>
+            </div>
+          </div>
+          <div class="results-header">
+            <span class="result-title">Vehicle Information</span>
+            <span class="status-dot" id="statusDot"></span>
+          </div>
+          <div class="result-row"><span>License Plate</span><strong id="plateValue">12-345-67</strong></div>
+          <div class="result-row"><span>Manufacturer</span><strong id="manufacturerValue">Toyota</strong></div>
+          <div class="result-row"><span>Model</span><strong id="modelValue">Corolla</strong></div>
+          <div class="result-row"><span>Year</span><strong id="yearValue">2018</strong></div>
+          <div class="result-row"><span>Fuel Type</span><strong id="fuelValue">Hybrid</strong></div>
+          <div class="result-row"><span>Name</span><strong id="ownerValue">Lior Cohen</strong></div>
+          <div class="result-row"><span>Registration</span><strong id="registrationValue">Public</strong></div>
+          <div class="result-row"><span>Status</span><strong id="statusValue">Active</strong></div>
+        </section>
+      </div>
+        <section class="tab-section favorites-card glass-card hidden" id="favoritesSection">
+          <div class="results-header">
+            <span class="result-title">Favorites</span>
+          </div>
+          <div id="favoritesList" class="favorites-list">
+            <p class="empty-favorites">No favorites yet. Save a result to see it here.</p>
+          </div>
+        </section>
+        <section class="tab-section settings-card glass-card hidden" id="settingsSection">
+          <div class="results-header">
+            <span class="result-title">Settings</span>
+          </div>
+          <div class="settings-row"><span>Search mode</span><strong>Local + API fallback</strong></div>
+          <div class="settings-row"><span>Display</span><strong>Fullscreen dashboard</strong></div>
+          <div class="settings-row"><span>Theme</span><strong>Night neon</strong></div>
+        </section>
+        <section class="tab-section history-card glass-card hidden" id="historySection">
+          <div class="results-header">
+            <span class="result-title">Search History</span>
+          </div>
+          <div id="historyList" class="history-list">
+            <p class="empty-history">No history yet. Search a plate to save it here.</p>
+          </div>
+        </section>
+        <section class="tab-section about-card glass-card hidden" id="aboutSection">
+          <div class="results-header">
+            <span class="result-title">About</span>
+          </div>
+          <div class="about-copy">
+            <p>IL Plate Checker is a lightweight Israeli license plate lookup demo with local fallback, favorites, and history.</p>
+            <p>Type a plate like <strong>48 320 26</strong>, <strong>48-320-26</strong> or <strong>4832026</strong> and search instantly.</p>
+            <p>Made by Lavi.</p>
+            <hr />
+            <h3>Autoboom — Plate Information (excerpt)</h3>
+            <p>בדיקה בסיסית – חינם וללא הרשמה. מאפיינים עיקריים: גרסת הרכב, היסטוריית קילומטראז', מספר בעלים, סטטוס רישיון, תאריך טסט אחרון, פרטי קשר עם המוכר (כאשר הרכב מוצע למכירה), מחיר מבוקש ותמונות.</p>
+            <p>כמו כן מוצגים: רמת גימור, היסטוריית מודעות, שימוש כמונית/השכרה/ליסינג (לרכבים מאז 2017), והאם הרכב נמצא כרכב גנוב לפי מאגרים רשמיים.</p>
+            <h4>צבעי לוחיות רישוי בישראל</h4>
+            <ul>
+              <li><strong>רגיל</strong> – לוחית צהובה (רכב פרטי).</li>
+              <li><strong>אספנות</strong> – לוחית צהובה מיוחדת (רכב היסטורי 30+ שנים).</li>
+              <li><strong>דיפלומטי</strong> – לוחית לבנה עם סימון CD.</li>
+              <li><strong>במבחן</strong> – לוחית עם ספרות אדומות (יבואן/סוחר/מוסך).</li>
+              <li><strong>רכב שטח</strong> – לוחית ירוקה.</li>
+              <li><strong>ספורט</strong> – לוחית מיוחדת עם קידומת S.</li>
+              <li><strong>משטרה / צבא</strong> – לוחיות אדומות/כחולות/שחורות לפי סוג.</li>
+            </ul>
+            <p>להזמנה של דוח מלא עם היסטוריית קילומטראז', העברות בעלות, ריקולים ונתונים נוספים, יש לבקר את Autoboom.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
+    }
+  </script>
+</body>
+</html>

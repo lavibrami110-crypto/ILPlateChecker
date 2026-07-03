@@ -1,0 +1,4 @@
+/* Extra fullscreen support if needed */
+body.fullscreen {
+  height: 100vh;
+}

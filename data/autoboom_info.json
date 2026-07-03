@@ -1,0 +1,22 @@
+{
+  "summary_he": "בדיקה בסיסית – חינם וללא הרשמה. מאפיינים עיקריים: גרסת הרכב, היסטוריית קילומטראז', מספר בעלים, סטטוס רישיון, תאריך טסט אחרון, פרטי קשר עם המוכר (כאשר הרכב מוצע למכירה), מחיר מבוקש ותמונות.",
+  "features_en": [
+    "Version and trim",
+    "Mileage history",
+    "Number of previous owners",
+    "Registration status",
+    "Last/next test date",
+    "Seller contact and price (if listed)",
+    "Listing history and photos"
+  ],
+  "plate_colors_he": {
+    "regular": "צהובה",
+    "collector": "צהובה (אספנות)",
+    "diplomatic": "לבנה (CD)",
+    "test": "אדומה",
+    "offroad": "ירוקה",
+    "sport": "S-prefix",
+    "police_military": "אדום/כחול/שחור לפי סוג"
+  },
+  "notes": "This file contains a static excerpt of Autoboom's public 'check-car' page to be used as reference inside IL Plate Checker. For live lookups, configure a remote API in config.json."
+}
